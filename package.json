@@ -15,6 +15,6 @@
   "dependencies": {
     "express": "4.13.4",
     "socket.io": "1.4.6",
-    "mysql": "~2.5.5"
+    "mysql": "2.10.2"
   }  
 }
