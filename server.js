@@ -15,7 +15,7 @@ const server = express()
 const io = socketIO(server);
 io.set('origins', '*:*');
 
-var con    =    mysql.createConnection({
+var pool    =    mysql.createPool({
       connectionLimit   :   100,
       host              :   '148.66.136.214',
       user              :   'pupskee',
@@ -40,24 +40,21 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 var add_status = function (status,callback) {
-  
-  con.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!");
-    var sql = "INSERT INTO `status` (`s_text`) VALUES ('"+status+"')";
-    con.query(sql, function (err, result) {
-           if(!err) {
+    pool.getConnection(function(err,connection){
+        if (err) {
+          callback(false);
+          return;
+        }
+    connection.query("INSERT INTO `status` (`s_text`) VALUES ('"+status+"')",function(err,rows){
+            connection.release();
+            if(!err) {
               callback(true);
             }
-      console.log("1 record inserted");
-    });
-       con.on('error', function(err) {
+        });
+     connection.on('error', function(err) {
               callback(false);
               return;
         });
-  });
-
-  
-
+    });
 }
 //setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
