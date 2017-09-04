@@ -52,8 +52,8 @@ var add_status = function (status,callback) {
     pool.query(sql, function (err, result) {
             if(!err) {
               callback(true);
-            }
-      console.log("1 record inserted");
+            }else{
+      console.log("1 record inserted")};
     });
   });
   
