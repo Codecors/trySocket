@@ -21,7 +21,7 @@ var connection    =    mysql.createConnection({
       user              :   'pupskee',
       password          :   'SOW#J@8~xfiUEBK+IAL',
       database          :   'pupskee',
-    
+    port : 3306
 });
 
 io.on('connection', (socket) => {
