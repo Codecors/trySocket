@@ -47,7 +47,7 @@ var add_status = function (status,callback) {
           callback(false);
           return;
         }
-    console.log('mysql connected');
+    console.log(err);
     var sql = "INSERT INTO `status` (`s_text`) VALUES ('"+status+"')";
     pool.query(sql, function (err, result) {
             if(!err) {
