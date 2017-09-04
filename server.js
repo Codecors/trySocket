@@ -17,7 +17,7 @@ io.set('origins', '*:*');
 
 var connection    =    mysql.createConnection({
 
-      host              :   '148.66.136.214',
+      host              :   'pupskee.com',
       user              :   'pupskee',
       password          :   'SOW#J@8~xfiUEBK+IAL',
       database          :   'pupskee',
