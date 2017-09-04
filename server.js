@@ -42,14 +42,14 @@ io.on('connection', (socket) => {
 });
 var add_status = function (status,callback) {
     console.log('status - '+status);
-  con.connect(function(err) {
+  pool.connect(function(err) {
         if (err) {
           callback(false);
           return;
         }
     console.log('mysql connected');
     var sql = "INSERT INTO `status` (`s_text`) VALUES ('"+status+"')";
-    con.query(sql, function (err, result) {
+    pool.query(sql, function (err, result) {
             if(!err) {
               callback(true);
             }
