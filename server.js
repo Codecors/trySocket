@@ -16,7 +16,6 @@ const io = socketIO(server);
 io.set('origins', '*:*');
 
 var pool    =    mysql.createPool({
-      connectionLimit   :   100,
       host              :   '148.66.136.214',
       user              :   'pupskee',
       password          :   'SOW#J@8~xfiUEBK+IAL',
