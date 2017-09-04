@@ -49,7 +49,7 @@ var add_status = function (status,callback) {
             if(!err) {
               callback(true);
             }else{
-      console.log("1 record inserted")};
+      console.log(err)};
     });
  
   
