@@ -27,6 +27,7 @@ var pool    =    mysql.createPool({
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
+    console.log('atleast status on');
       add_status(status,function(res){
         if(res){
             io.emit('refresh feed',status);
@@ -40,6 +41,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 var add_status = function (status,callback) {
+    console.log('status - '+status);
     pool.getConnection(function(err,connection){
         if (err) {
           callback(false);
