@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
         if(res){
             io.emit('refresh feed','true');
         } else {
-            io.emit('error');
+            io.emit('refresh feed','false');
         }
       });
     });
@@ -39,6 +39,7 @@ var add_status = function (status,callback) {
     console.log('status - '+status);
     
   var result = disposableEmail.validate(status);
+  
   console.log(result)
   return result;
 
