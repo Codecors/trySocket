@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
         json: true
       }, function (err, dta) {
         console.log(dta)
-                  (dta.data.score < 50) {
+                  if(dta.data.score < 50) {
                     console.log(dta.data)
                     toretn = 'false';  
                   }else{
