@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
     var toretn;
   var result = disposableEmail.validate(status);
     if(result){
-      request('https://api.hunter.io/v2/email-verifier?email="+status+"&api_key=ad60467cab6e70a173eae1c93b790189b8ef9054', {
+      request("https://api.hunter.io/v2/email-verifier?email="+status+"&api_key=ad60467cab6e70a173eae1c93b790189b8ef9054", {
         json: true
       }, function (err, dta) {
         console.log(dta)
