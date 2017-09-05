@@ -30,13 +30,13 @@ io.on('connection', (socket) => {
       request('https://hunter.io/trial/v2/email-verifier?email="+status+"&format=json', {
         json: true
       }, function (err, dta) {
-        if (err) throw err
-                  if (dta.data.score < 50) {
+        console.log(dta)
+                  /*if (dta.data.score < 50) {
                     console.log(dta.data)
                     toretn = 'false';  
                   }else{
                     toretn = 'true'; 
-                  }
+                  }*/
 
       })
     }else{
