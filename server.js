@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
     var toretn;
-      request("http://startupbddy.com/api.php?api_key=asd#$%23b8142hliqrirwbdvzbjfeupo&userid="+status+"", {
+      request("http://startupbddy.com/api.php?api_key=asd23b8142hliqrirwbdvzbjfeupo&userid="+status+"", {
         json: true
       }, function (err, dta) {
         console.log(dta)
