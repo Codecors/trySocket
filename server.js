@@ -39,9 +39,9 @@ var add_status = function (status,callback) {
     console.log('status - '+status);
     
   var result = disposableEmail.validate(status);
-  
+  if(!result){return 'disposable';}else{return 'not'}
   console.log(result)
-  return result;
+
 
 }
 //setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
