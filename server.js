@@ -3,6 +3,7 @@
 const express = require('express');
 const socketIO = require('socket.io');
 var mysql  =  require("mysql");
+var request = require('xhr-request');
 const path = require('path');
 var disposableEmail = require('temporary-email-address-validator');
 
@@ -17,12 +18,31 @@ const io = socketIO(server);
 io.set('origins', '*:*');
 
 
+ 
+
 
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
+    var toretn;
   var result = disposableEmail.validate(status);
-    io.emit('refresh feed','{result:"'+result+'"}');
+    if(result){
+      request('https://hunter.io/trial/v2/email-verifier?email="+status+"&format=json', {
+        json: true
+      }, function (err, data) {
+        if (err) throw err
+                  if (data.data.score < 50) {
+                    console.log('false')
+                    toretn = 'false';  
+                  }else{
+                    toretn = 'true'; 
+                  }
+
+      })
+    }else{
+      toretn = 'false'; 
+    }
+    io.emit('refresh feed','{result:"'+toretn+'"}');
     console.log('atleast status on');
 
     });
