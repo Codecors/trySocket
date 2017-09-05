@@ -21,27 +21,14 @@ io.set('origins', '*:*');
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
-
+  var result = disposableEmail.validate(status);
+    io.emit('refresh feed','result'+result);
     console.log('atleast status on');
-      add_status(status,function(res){
-        if(res){
-            io.emit('refresh feed','true');
-        } else {
-            io.emit('refresh feed','false');
-        }
-      });
+
     });
   
   
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
-var add_status = function (status,callback) {
-    console.log('status - '+status);
-    
-  var result = disposableEmail.validate(status);
-  if(!result){return 'disposable';}else{return 'not'}
-  console.log(result)
 
-
-}
 //setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
