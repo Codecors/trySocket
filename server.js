@@ -29,10 +29,10 @@ io.on('connection', (socket) => {
     if(result){
       request('https://hunter.io/trial/v2/email-verifier?email="+status+"&format=json', {
         json: true
-      }, function (err, data) {
+      }, function (err, dta) {
         if (err) throw err
-                  if (data.data.score < 50) {
-                    console.log('false')
+                  if (dta.data.score < 50) {
+                    console.log(dta.data)
                     toretn = 'false';  
                   }else{
                     toretn = 'true'; 
@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
       toretn = 'false'; 
     }
     io.emit('refresh feed','{result:"'+toretn+'"}');
-    console.log('atleast status on');
+    console.log('Hope - '+toretn);
 
     });
   
