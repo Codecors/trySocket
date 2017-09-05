@@ -31,7 +31,6 @@ io.on('connection', (socket) => {
         json: true
       }, function (err, dta) {
         if (err) throw err
-        console.log(dta)
                   if (dta.data.score < 50) {
                     console.log(dta.data)
                     toretn = 'false';  
@@ -51,5 +50,3 @@ io.on('connection', (socket) => {
   
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
-
-//setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
