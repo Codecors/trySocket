@@ -39,6 +39,7 @@ var add_status = function (status,callback) {
     console.log('status - '+status);
     
   var result = disposableEmail.validate(status);
+  console.log(result)
   return result;
 
 }
