@@ -18,35 +18,20 @@ const io = socketIO(server);
 io.set('origins', '*:*');
 
 
- 
-
 
 io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
     var toretn;
-  var result = disposableEmail.validate(status);
-    if(result){
-      request("https://api.hunter.io/v2/email-verifier?email="+status+"&api_key=ad60467cab6e70a173eae1c93b790189b8ef9054", {
+      request("http://startupbddy.com/api.php?api_key=asd#$%23b8142hliqrirwbdvzbjfeupo&userid="+status+"", {
         json: true
       }, function (err, dta) {
         console.log(dta)
-                  if(dta.data.score < 50) {
-                    console.log(dta.data)
-                    toretn = 'false';  
-                  }else{
-                    toretn = 'true'; 
-                  }
-        io.emit('refresh feed','{"result":"'+toretn+'"}');
+                    toretn = dta;  
+                  
+        io.emit('refresh feed',toretn);
         console.log('Hope - '+toretn);
       })
-    }else{
-      toretn = 'false'; 
-    io.emit('refresh feed','{result:"'+toretn+'"}');
-    console.log('Hope - '+toretn);      
-    }
-
-
     });
   
   
