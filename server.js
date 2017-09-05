@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
   console.log('Client connected');
   socket.on('status added',function(status){
   var result = disposableEmail.validate(status);
-    io.emit('refresh feed','result'+result);
+    io.emit('refresh feed','{result:"'+result+'"}');
     console.log('atleast status on');
 
     });
