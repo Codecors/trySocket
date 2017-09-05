@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
                   }else{
                     toretn = 'true'; 
                   }
-        io.emit('refresh feed','{result:"'+toretn+'"}');
+        io.emit('refresh feed','{"result":"'+toretn+'"}');
         console.log('Hope - '+toretn);
       })
     }else{
